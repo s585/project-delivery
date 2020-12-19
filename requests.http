@@ -1,36 +1,36 @@
-GET http://localhost:8080/orders
+GET https://s585project-delivery.herokuapp.com/orders
 
 ###
 
-GET http://localhost:8080/orders/1
+GET https://s585project-delivery.herokuapp.com/orders/1
 
 ###
 
-GET http://localhost:8080/orders/search?delivererId=5&date1=2020-12-10 00:00:01&date2=2020-12-13 23:59:59
+GET https://s585project-delivery.herokuapp.com/orders/search?delivererId=5&date1=2020-12-10 00:00:01&date2=2020-12-13 23:59:59
 
 ###
 
-GET http://localhost:8080/orders/customers/1
+GET https://s585project-delivery.herokuapp.com/orders/customers/1
 
 ###
 
-GET http://localhost:8080/orders/vendors/1
+GET https://s585project-delivery.herokuapp.com/orders/vendors/1
 
 ###
 
-DELETE http://localhost:8080/orders/4/remove
+DELETE https://s585project-delivery.herokuapp.com/orders/4/remove
 
 ###
 
-GET http://localhost:8080/carts/
+GET https://s585project-delivery.herokuapp.com/carts/
 
 ###
 
-GET http://localhost:8080/carts/2/
+GET https://s585project-delivery.herokuapp.com/carts/2/
 
 ###
 
-POST http://localhost:8080/carts
+POST https://s585project-delivery.herokuapp.com/carts
 Content-Type: application/json
 
 {
@@ -48,23 +48,23 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8080/carts/1/checkout
+POST https://s585project-delivery.herokuapp.com/carts/1/checkout
 
 ###
 
-DELETE http://localhost:8080/carts/4/remove
+DELETE https://s585project-delivery.herokuapp.com/carts/4/remove
 
 ###
 
-GET http://localhost:8080/customers/
+GET https://s585project-delivery.herokuapp.com/customers/
 
 ###
 
-GET http://localhost:8080/customers/2/
+GET https://s585project-delivery.herokuapp.com/customers/2/
 
 ###
 
-POST http://localhost:8080/customers
+POST https://s585project-delivery.herokuapp.com/customers
 Content-Type: application/json
 
 {
@@ -75,19 +75,19 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/customers/6/remove
+DELETE https://s585project-delivery.herokuapp.com/customers/6/remove
 
 ###
 
-GET http://localhost:8080/deliverers/
+GET https://s585project-delivery.herokuapp.com/deliverers/
 
 ###
 
-GET http://localhost:8080/deliverers/2/
+GET https://s585project-delivery.herokuapp.com/deliverers/2/
 
 ###
 
-POST http://localhost:8080/deliverers
+POST https://s585project-delivery.herokuapp.com/deliverers
 Content-Type: application/json
 
 {
@@ -98,19 +98,19 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/deliverers/8/remove
+DELETE https://s585project-delivery.herokuapp.com/deliverers/8/remove
 
 ###
 
-GET http://localhost:8080/vendors/
+GET https://s585project-delivery.herokuapp.com/vendors/
 
 ###
 
-GET http://localhost:8080/vendors/3
+GET https://s585project-delivery.herokuapp.com/vendors/3
 
 ###
 
-POST http://localhost:8080/vendors
+POST https://s585project-delivery.herokuapp.com/vendors
 Content-Type: application/json
 
 {
@@ -121,19 +121,19 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/vendors/5/remove
+https://s585project-delivery.herokuapp.com/vendors/5/remove
 
 ###
 
-GET http://localhost:8080/products/
+GET https://s585project-delivery.herokuapp.com/products/
 
 ###
 
-GET http://localhost:8080/products/7
+GET https://s585project-delivery.herokuapp.com/products/7
 
 ###
 
-POST http://localhost:8080/products/
+POST https://s585project-delivery.herokuapp.com/products/
 Content-Type: application/json
 
 {
@@ -146,4 +146,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/products/9/remove
+DELETE https://s585project-delivery.herokuapp.com/products/9/remove
