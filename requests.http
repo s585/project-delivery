@@ -1,0 +1,149 @@
+GET http://localhost:8080/orders
+
+###
+
+GET http://localhost:8080/orders/1
+
+###
+
+GET http://localhost:8080/orders/search?delivererId=5&date1=2020-12-10 00:00:01&date2=2020-12-13 23:59:59
+
+###
+
+GET http://localhost:8080/orders/customers/1
+
+###
+
+GET http://localhost:8080/orders/vendors/1
+
+###
+
+DELETE http://localhost:8080/orders/4/remove
+
+###
+
+GET http://localhost:8080/carts/
+
+###
+
+GET http://localhost:8080/carts/2/
+
+###
+
+POST http://localhost:8080/carts
+Content-Type: application/json
+
+{
+  "id": 0,
+  "customerId": 2,
+  "products": [
+    1,
+    2
+  ],
+  "qty": [
+    2,
+    3
+  ]
+}
+
+###
+
+POST http://localhost:8080/carts/1/checkout
+
+###
+
+DELETE http://localhost:8080/carts/4/remove
+
+###
+
+GET http://localhost:8080/customers/
+
+###
+
+GET http://localhost:8080/customers/2/
+
+###
+
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Громов",
+  "address": "Казань, Тимирязева 4"
+}
+
+###
+
+DELETE http://localhost:8080/customers/6/remove
+
+###
+
+GET http://localhost:8080/deliverers/
+
+###
+
+GET http://localhost:8080/deliverers/2/
+
+###
+
+POST http://localhost:8080/deliverers
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Полевой",
+  "location": "Казань, Абсалямова 23"
+}
+
+###
+
+DELETE http://localhost:8080/deliverers/8/remove
+
+###
+
+GET http://localhost:8080/vendors/
+
+###
+
+GET http://localhost:8080/vendors/3
+
+###
+
+POST http://localhost:8080/vendors
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Мясо в лаваше",
+  "address": "Казань, Мусина 10А"
+}
+
+###
+
+DELETE http://localhost:8080/vendors/5/remove
+
+###
+
+GET http://localhost:8080/products/
+
+###
+
+GET http://localhost:8080/products/7
+
+###
+
+POST http://localhost:8080/products/
+Content-Type: application/json
+
+{
+  "id": 0,
+  "categoryId": 1,
+  "vendorId": 3,
+  "name": "Шашлык",
+  "unitPrice": 400
+}
+
+###
+
+DELETE http://localhost:8080/products/9/remove
