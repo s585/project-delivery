@@ -28,31 +28,6 @@ public class VendorManager {
         return template.query("SELECT * FROM vendors LIMIT 50",
                 vendorRowMapper);
     }
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery("SELECT * FROM vendors LIMIT 50");
-//        ) {
-//
-//            List<Vendor> items = new ArrayList<>();
-//            while (rs.next()) {
-//                items.add(mapRow(rs));
-//            }
-//            return items;
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//    }
-
-//    private Vendor mapRow(ResultSet rs) throws SQLException {
-//        return new Vendor(
-//                rs.getLong("vendor_id"),
-//                rs.getString("name"),
-//                rs.getString("address"),
-//                rs.getDouble("lon"),
-//                rs.getDouble("lat")
-//        );
-//    }
 
     public Vendor getById(long id) {
         return template.queryForObject("SELECT * FROM vendors WHERE vendor_id = :vendor_id LIMIT 50",
@@ -60,21 +35,6 @@ public class VendorManager {
                 vendorRowMapper
         );
     }
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                PreparedStatement ps = conn.prepareStatement(
-//                        "SELECT * FROM vendors WHERE vendor_id = ? LIMIT 50");
-//        ) {
-//            ps.setLong(1, id);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                return mapRow(rs);
-//            }
-//            throw new NotFoundException();
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//    }
 
     public Vendor save(Vendor item) {
         DeliveryManager deliveryManager = new DeliveryManager(
@@ -106,56 +66,6 @@ public class VendorManager {
         return getById(item.getId());
     }
 
-
-
-//            try (
-//                    Connection conn = dataSource.getConnection();
-//                    PreparedStatement ps = conn.prepareStatement(
-//                            "INSERT INTO vendors (name, address, lon, lat) VALUES (?,?,?,?)",
-//                            Statement.RETURN_GENERATED_KEYS
-//                    );
-//            ) {
-//                double[] coordinates = deliveryManager.getCoordinates(item.getAddress());
-//                int index = 0;
-//                ps.setString(++index, item.getName());
-//                ps.setString(++index, item.getAddress());
-//                ps.setDouble(++index, coordinates[0]);
-//                ps.setDouble(++index, coordinates[1]);
-//                ps.execute();
-//
-//                try (ResultSet keys = ps.getGeneratedKeys()) {
-//                    if (keys.next()) {
-//                        long id = keys.getLong(1);
-//                        return getById(id);
-//                    }
-//                    throw new DataAccessException("No generated keys");
-//                }
-//            } catch (SQLException e) {
-//                throw new DataAccessException(e);
-//            }
-//        }
-//
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                PreparedStatement ps = conn.prepareStatement(
-//                        "UPDATE vendors SET name = ?, address = ? , lon = ?, lat = ? WHERE vendor_id = ?");
-//        ) {
-//            double[] coordinates = deliveryManager.getCoordinates(item.getAddress());
-//            int index = 0;
-//            ps.setString(++index, item.getName());
-//            ps.setString(++index, item.getAddress());
-//            ps.setDouble(++index, coordinates[0]);
-//            ps.setDouble(++index, coordinates[1]);
-//            ps.setLong(++index, item.getId());
-//            ps.execute();
-//
-//            return getById(item.getId());
-//
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//    }
-
     public Vendor removeById(long id) {
         Vendor item = getById(id);
         template.update("DELETE FROM vendors WHERE vendor_id = :vendor_id",
@@ -164,16 +74,4 @@ public class VendorManager {
         return item;
     }
 }
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                PreparedStatement ps = conn.prepareStatement("DELETE FROM vendors WHERE vendor_id = ?");
-//        ) {
-//            ps.setLong(1, id);
-//            ps.execute();
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//        return item;
-//                }
-//                }
 

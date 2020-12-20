@@ -29,55 +29,12 @@ public class CustomerManager {
                 customerRowMapper);
     }
 
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery("SELECT * FROM customers LIMIT 50");
-//        ) {
-//
-//            List<Customer> items = new ArrayList<>();
-//            while (rs.next()) {
-//                items.add(new Customer(
-//                        rs.getLong("customer_id"),
-//                        rs.getString("name"),
-//                        rs.getString("address"),
-//                        rs.getDouble("lon"),
-//                        rs.getDouble("lat")
-//                ));
-//            }
-//            return items;
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//    }
-
     public Customer getById(long id) {
         return template.queryForObject("SELECT * FROM customers WHERE customer_id = :customer_id LIMIT 50",
                 Map.of("customer_id", id),
                 customerRowMapper
         );
     }
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                PreparedStatement ps = conn.prepareStatement(
-//                        "SELECT * FROM customers WHERE customer_id = ? LIMIT 50");
-//        ) {
-//            ps.setLong(1, id);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                return new Customer(
-//                        rs.getLong("customer_id"),
-//                        rs.getString("name"),
-//                        rs.getString("address"),
-//                        rs.getDouble("lon"),
-//                        rs.getDouble("lat")
-//                );
-//            }
-//            throw new NotFoundException();
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//    }
 
     public Customer save(Customer item) {
         DeliveryManager deliveryManager = new DeliveryManager(
@@ -108,53 +65,6 @@ public class CustomerManager {
         );
         return getById(item.getId());
     }
-//            try (
-//                    Connection conn = dataSource.getConnection();
-//                    PreparedStatement ps = conn.prepareStatement(
-//                            "INSERT INTO customers (name, address, lon, lat) VALUES (?,?,?,?)",
-//                            Statement.RETURN_GENERATED_KEYS
-//                    );
-//            ) {
-//                double[] coordinates = deliveryManager.getCoordinates(item.getAddress());
-//                int index = 0;
-//                ps.setString(++index, item.getName());
-//                ps.setString(++index, item.getAddress());
-//                ps.setDouble(++index, coordinates[0]);
-//                ps.setDouble(++index, coordinates[1]);
-//                ps.execute();
-//
-//                try (ResultSet keys = ps.getGeneratedKeys()) {
-//                    if (keys.next()) {
-//                        long id = keys.getLong(1);
-//                        return getById(id);
-//                    }
-//                    throw new DataAccessException("No generated keys");
-//                }
-//            } catch (SQLException e) {
-//                throw new DataAccessException(e);
-//            }
-//        }
-//
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                PreparedStatement ps = conn.prepareStatement(
-//                        "UPDATE customers SET name = ?, address = ? , lon = ?, lat = ? WHERE customer_id = ?");
-//        ) {
-//            double[] coordinates = deliveryManager.getCoordinates(item.getAddress());
-//            int index = 0;
-//            ps.setString(++index, item.getName());
-//            ps.setString(++index, item.getAddress());
-//            ps.setDouble(++index, coordinates[0]);
-//            ps.setDouble(++index, coordinates[1]);
-//            ps.setLong(++index, item.getId());
-//            ps.execute();
-//
-//            return getById(item.getId());
-//
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//    }
 
     public Customer removeById(long id) {
         Customer item = getById(id);
@@ -163,18 +73,4 @@ public class CustomerManager {
         );
         return item;
     }
-
-//    public Customer removeById(long id) {
-//        Customer item = getById(id);
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                PreparedStatement ps = conn.prepareStatement("DELETE FROM customers WHERE customer_id = ?");
-//        ) {
-//            ps.setLong(1, id);
-//            ps.execute();
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//        return item;
-//    }
 }
