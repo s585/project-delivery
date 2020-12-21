@@ -22,8 +22,7 @@ public class YaGeocoder {
 
     public Stream<GeoObject> directGeocode(String geocode) {
         try {
-//            String apiKey = System.getenv("YAGEO");
-            String apiKey = "dce9aaf5-44bd-41c2-bf04-bf46558c7a38";
+            String apiKey = System.getenv("YAGEO");
 
             String format = "json";
             String url = GEOCODER_HOST + "?apikey=" + apiKey + "&format=" + format + "&geocode=" +
